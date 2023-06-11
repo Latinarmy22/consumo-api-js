@@ -1,0 +1,19 @@
+{
+  "name": "consumo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Latinarmy22/consumo-api-js.git"
+  },
+  "author": "Pablo Rada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Latinarmy22/consumo-api-js/issues"
+  },
+  "homepage": "https://github.com/Latinarmy22/consumo-api-js#readme"
+}
