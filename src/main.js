@@ -1,3 +1,13 @@
+const api = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  params: {
+    'api_key': API_KEY,
+  }
+});
+
 // Funcion para obtener las peliculas en tedencia.
 async function getTrendingMoviesPreview() {
     // asincrona: concaena el endpoint que se va a consumir se recibe day como query parameter y se concatena la variable API_KEY
@@ -32,4 +42,37 @@ async function getTrendingMoviesPreview() {
     });
   }
 
+  // Funcion para obtener las categorias
+  async function getCategegoriesPreview() {
+    // Se utiliza la instancia api de axios la cual tiene la url base esta concatena la url que le ponemos abajo y el api key lo envia como un params. axios ya guarda la respuesta en formato JSON por lo que no se debe convertir.
+    const {data} = await api('genre/movie/list');
+    // Se guarda la respuesta en la variable categories
+    const categories = data.genres;
+    // recorremos el objeto categories
+    categories.forEach(category => {
+      // seleccionamos el elemento HTML con id categoriesPreview y que dentro tenga un elemento con clase categoriesPreview-list
+      const previewCategoriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list')
+
+      // creamos un elemento de tipo DIV y se le añade la clase category-container
+      const categoryContainer = document.createElement('div');
+      categoryContainer.classList.add('category-container');
+
+      // Se crea un elemento H3 y se le añade la clase category-title
+      const categoryTitle = document.createElement('h3');
+      categoryTitle.classList.add('category-title');
+      // Se concatena el string id con el elemento id de la respuesta del api
+      categoryTitle.setAttribute('id', 'id' + category.id);
+      // con create Text Node se puede modificar el texto.
+      const categoryTitleText = document.createTextNode(category.name);
+
+      // Se mete el texto del titulo en el h3
+      categoryTitle.appendChild(categoryTitleText);
+      //se mete el h3 en el div
+      categoryContainer.appendChild(categoryTitle);
+      // Se mete el div en el section
+      previewCategoriesContainer.appendChild(categoryContainer);
+    });
+  }
+
   getTrendingMoviesPreview();
+  getCategegoriesPreview();
