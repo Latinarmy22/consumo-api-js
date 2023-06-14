@@ -19,8 +19,8 @@ async function getTrendingMoviesPreview() {
     const movies = data.results;
     // recorre el array de reults
     movies.forEach(movie => {
-    // obtiene en la variable trendingPreviewMoviesContainer el elemento con la clase trendingPreview-movieList que este dentro del elemento con ID trendingPreview
-      const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList')
+    // obtiene en la variable trendingMoviesPreviewList el elemento con la clase trendingPreview-movieList que este dentro del elemento con ID trendingPreview
+      const trendingMoviesPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList')
 
     // Crea un elemento DIV y le añade la clase movie-container
       const movieContainer = document.createElement('div');
@@ -37,8 +37,8 @@ async function getTrendingMoviesPreview() {
 
     //   mete dentro de movie container el elemento movieimg
       movieContainer.appendChild(movieImg);
-    //   mete dentro del elemento trendingPreviewMoviesContainer el elemento movieContainer que ya tiene el elemento movieImg
-      trendingPreviewMoviesContainer.appendChild(movieContainer);
+    //   mete dentro del elemento trendingMoviesPreviewList el elemento movieContainer que ya tiene el elemento movieImg
+      trendingMoviesPreviewList.appendChild(movieContainer);
     });
   }
 
@@ -51,7 +51,7 @@ async function getTrendingMoviesPreview() {
     // recorremos el objeto categories
     categories.forEach(category => {
       // seleccionamos el elemento HTML con id categoriesPreview y que dentro tenga un elemento con clase categoriesPreview-list
-      const previewCategoriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list')
+      const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list')
 
       // creamos un elemento de tipo DIV y se le añade la clase category-container
       const categoryContainer = document.createElement('div');
@@ -70,7 +70,7 @@ async function getTrendingMoviesPreview() {
       //se mete el h3 en el div
       categoryContainer.appendChild(categoryTitle);
       // Se mete el div en el section
-      previewCategoriesContainer.appendChild(categoryContainer);
+      categoriesPreviewList.appendChild(categoryContainer);
     });
   }
 
